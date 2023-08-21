@@ -5,9 +5,8 @@ Repository associated with the paper **"PRIEST: Projection Guided Sampling-Based
 
 Contacts: Fatemeh Rastgar (fatemeh.rastgar2@gmail.com), Arun Kumar Singh (aks1812@gmail.com)
 
-**General Requirements:**
-
-Numpy, Scipy,Jax-Numpy (https://github.com/google/jax), FATROP(git@gitlab.kuleuven.be:robotgenskill/fatrop/fatrop.git), 
+** Requirements:**
+The following libraries and repositries are used through this work. 
 
 | Use| Repo/library name | Links |
 | --- | --- |---|
@@ -15,3 +14,6 @@ Numpy, Scipy,Jax-Numpy (https://github.com/google/jax), FATROP(git@gitlab.kuleuv
 | General | Scipy |...|
 | General | Jax-Numpy|(https://github.com/google/jax)|
 |Plot 3d trajectories|mayavi|(https://docs.enthought.com/mayavi/mayavi/installation.html)|
+|gradient-based solver | FATROP |(git@gitlab.kuleuven.be:robotgenskill/fatrop/fatrop.git)|
+|Mobile robot | Jackal | (https://github.com/dperille/jackal-map-creation)|
+|Mobile robot | Robotont |(https://github.com/robotont)|
