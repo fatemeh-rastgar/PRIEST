@@ -5,9 +5,10 @@ Repository associated with the paper **"PRIEST: Projection Guided Sampling-Based
 
 Contacts: Fatemeh Rastgar (fatemeh.rastgar2@gmail.com), Arun Kumar Singh (aks1812@gmail.com)
 
-** Requirements:**
+**General Requirements:**
 
-ROS installation, Ubuntu, 
+|ROS installation| Numpy|Jax-Numpy|(https://github.com/google/jax)|
+|Ubuntu|Scipy|mayavi(https://docs.enthought.com/mayavi/mayavi/installation.html)|
 
 plus the following libraries and repositories 
 
