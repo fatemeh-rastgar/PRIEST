@@ -7,7 +7,9 @@ Contacts: Fatemeh Rastgar (fatemeh.rastgar2@gmail.com), Arun Kumar Singh (aks181
 
 ** Requirements:**
 
-The following libraries and repositories are used throughout this work. 
+ROS installation, Ubuntu, 
+
+plus the following libraries and repositories 
 
 | Use| Repo/library name | Links |
 | --- | --- |---|
@@ -19,4 +21,5 @@ The following libraries and repositories are used throughout this work.
 |gradient-based solver |ROCKIT |(https://gitlab.kuleuven.be/meco-software/rockit)|
 |Mobile robot | Jackal | (https://github.com/dperille/jackal-map-creation)|
 |Mobile robot | Robotont |(https://github.com/robotont)|
+|Sampling-based method| log-MPPI |(https://github.com/IhabMohamed/log-MPPI_ros)|
 
