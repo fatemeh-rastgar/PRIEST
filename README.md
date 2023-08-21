@@ -9,7 +9,9 @@ Contacts: Fatemeh Rastgar (fatemeh.rastgar2@gmail.com), Arun Kumar Singh (aks181
 
 Numpy, Scipy,Jax-Numpy (https://github.com/google/jax), FATROP(git@gitlab.kuleuven.be:robotgenskill/fatrop/fatrop.git), 
 
-|   Repo/library name | Links |
-| --- | --- |
-| General | Numpy |
-| General | Scipy |
+| Use| Repo/library name | Links |
+| --- | --- |---|
+| General | Numpy |...|
+| General | Scipy |...|
+| General | Jax-Numpy|(https://github.com/google/jax)|
+|Plot 3d trajectories|mayavi|(https://docs.enthought.com/mayavi/mayavi/installation.html)|
