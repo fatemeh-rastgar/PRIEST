@@ -20,7 +20,9 @@ plus the following libraries and repositories
 |Plot 3d trajectories|mayavi|(https://docs.enthought.com/mayavi/mayavi/installation.html)|
 |gradient-based solver | FATROP |(git@gitlab.kuleuven.be:robotgenskill/fatrop/fatrop.git)| 
 |gradient-based solver |ROCKIT |(https://gitlab.kuleuven.be/meco-software/rockit)|
-|Mobile robot | Jackal | (https://github.com/dperille/jackal-map-creation)|
-|Mobile robot | Robotont |(https://github.com/robotont)|
 |Sampling-based method| log-MPPI |(https://github.com/IhabMohamed/log-MPPI_ros)|
+
+** Run planner on Barn dataset ***
+      roslaunch priest clearpath_launch.launch
+      rosrun priest planner_holonomic.py
 
