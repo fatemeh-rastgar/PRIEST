@@ -25,6 +25,7 @@ plus the following libraries and repositories
 ** Run planner on Barn dataset ***
 
       roslaunch priest clearpath_launch.launch
+      
       rosrun priest planner_holonomic.py
       
 
