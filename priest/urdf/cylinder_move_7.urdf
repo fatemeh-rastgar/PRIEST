@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<robot name="obstacle_7">
+
+<link name="box_7">
+  <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1.0" />
+      <inertia ixx="0.0741666666667" ixy="0.0" ixz="0.0" iyy="0.0585416666667" iyz="0.0" izz="0.0260416666667"/>
+  </inertial>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+        <cylinder radius="0.3" length="0.8"/>
+    </geometry>
+  </collision>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+        <cylinder radius="0.3" length="0.8"/>
+    </geometry>
+    <material name="Cyan">
+       <color rgba="0.5 0.5 0.5 1.0"/>         
+       </material>
+  </visual>
+  </link>
+  
+  <link name="box_7_base_footprint">
+  </link>
+
+  <joint name="box_7_base_link_joint" type="fixed">
+    <origin xyz="0.0 0 0.1" rpy="0 0 0" />
+    <parent link="box_7_base_footprint"/>
+    <child link="box_7" />
+  </joint>
+
+  <gazebo>
+      <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>obs_7/cmd_vel</commandTopic>
+        <odometryTopic>obs_7/odom</odometryTopic>
+        <odometryFrame>obs_7/odom</odometryFrame>
+        <odometryRate>100.0</odometryRate>
+        <robotBaseFrame>box_7_base_footprint</robotBaseFrame>
+      </plugin>
+    </gazebo>
+  
+  <!-- <gazebo>
+    <plugin name="JointStatePublisher" filename="libJointStatePublisher.so">
+    <joints>box_1_base_link_joint</joints>
+    <publish_selected_only>1</publish_selected_only>
+</plugin>
+  </gazebo> -->
+
+    <gazebo reference="box_7">
+      <turnGravityOff> true </turnGravityOff>
+      <kp>100000.0</kp>
+      <kd>100000.0</kd>
+      <mu1>0.1</mu1>
+      <mu2>0.1</mu2>
+      <fdir1>1 0 0</fdir1>
+    </gazebo>
+</robot>

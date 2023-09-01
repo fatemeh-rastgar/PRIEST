@@ -1,0 +1,16 @@
+<launch>
+
+
+    <arg name="initial_pose_x" default="0"/>
+    <arg name="initial_pose_y" default="0"/>
+    <arg name="initial_pose_a" default="0"/>
+    <arg name="model" default="robotont_gazebo_nuc"/>
+   
+
+
+    <param name="robot_description" command="$(find xacro)/xacro $(find priest)/urdf/robotont_gazebo_lidar.urdf.xacro"/>
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -x $(arg initial_pose_x) -y $(arg initial_pose_y) -Y $(arg initial_pose_a) -model robotont"  output="screen"/>  
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+</launch>

@@ -1,0 +1,1358 @@
+<sdf version='1.7'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='gate_1'>
+      <link name='base'>
+        <inertial>
+          <pose>-1.2 0 0 0 -0 0</pose>
+          <mass>4</mass>
+          <inertia>
+            <ixx>6.07667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>8.89417</iyy>
+            <iyz>0</iyz>
+            <izz>2.98417</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_fixed_joint_lump__buttom_1_collision_1'>
+          <pose>-1.2 0 -1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_fixed_joint_lump__left_1_collision_2'>
+          <pose>-2.4 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_fixed_joint_lump__upper_collision_3'>
+          <pose>-1.2 0 1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_fixed_joint_lump__buttom_1_visual_1'>
+          <pose>-1.2 0 -1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_fixed_joint_lump__left_1_visual_2'>
+          <pose>-2.4 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_fixed_joint_lump__upper_visual_3'>
+          <pose>-1.2 0 1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>0</gravity>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-0.8 0.519 2 0 -0 0</pose>
+    </model>
+    <model name='gate_1_clone'>
+      <link name='base'>
+        <inertial>
+          <pose>-1.2 0 0 0 -0 0</pose>
+          <mass>4</mass>
+          <inertia>
+            <ixx>6.07667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>8.89417</iyy>
+            <iyz>0</iyz>
+            <izz>2.98417</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_fixed_joint_lump__buttom_1_collision_1'>
+          <pose>-1.2 0 -1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_fixed_joint_lump__left_1_collision_2'>
+          <pose>-2.4 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_fixed_joint_lump__upper_collision_3'>
+          <pose>-1.2 0 1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_fixed_joint_lump__buttom_1_visual_1'>
+          <pose>-1.2 0 -1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_fixed_joint_lump__left_1_visual_2'>
+          <pose>-2.4 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_fixed_joint_lump__upper_visual_3'>
+          <pose>-1.2 0 1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>0</gravity>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-0.439163 3.44893 2 0 -2e-06 0</pose>
+    </model>
+    <model name='gate_1_clone_0'>
+      <link name='base'>
+        <inertial>
+          <pose>-1.2 0 0 0 -0 0</pose>
+          <mass>4</mass>
+          <inertia>
+            <ixx>6.07667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>8.89417</iyy>
+            <iyz>0</iyz>
+            <izz>2.98417</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_fixed_joint_lump__buttom_1_collision_1'>
+          <pose>-1.2 0 -1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_fixed_joint_lump__left_1_collision_2'>
+          <pose>-2.4 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_fixed_joint_lump__upper_collision_3'>
+          <pose>-1.2 0 1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_fixed_joint_lump__buttom_1_visual_1'>
+          <pose>-1.2 0 -1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_fixed_joint_lump__left_1_visual_2'>
+          <pose>-2.4 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_fixed_joint_lump__upper_visual_3'>
+          <pose>-1.2 0 1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>0</gravity>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>3.03476 6.85263 2.00062 0.000705 0.000588 -0.088378</pose>
+    </model>
+    <model name='gate_1_clone_0_clone'>
+      <link name='base'>
+        <inertial>
+          <pose>-1.2 0 0 0 -0 0</pose>
+          <mass>4</mass>
+          <inertia>
+            <ixx>6.07667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>8.89417</iyy>
+            <iyz>0</iyz>
+            <izz>2.98417</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_fixed_joint_lump__buttom_1_collision_1'>
+          <pose>-1.2 0 -1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_fixed_joint_lump__left_1_collision_2'>
+          <pose>-2.4 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_fixed_joint_lump__upper_collision_3'>
+          <pose>-1.2 0 1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_fixed_joint_lump__buttom_1_visual_1'>
+          <pose>-1.2 0 -1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_fixed_joint_lump__left_1_visual_2'>
+          <pose>-2.4 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_fixed_joint_lump__upper_visual_3'>
+          <pose>-1.2 0 1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>0</gravity>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>6.482 -0.741541 2.00062 0.000705 0.000588 1.57</pose>
+    </model>
+    <model name='gate_1_clone_0_clone_clone'>
+      <link name='base'>
+        <inertial>
+          <pose>-1.2 0 0 0 -0 0</pose>
+          <mass>4</mass>
+          <inertia>
+            <ixx>6.07667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>8.89417</iyy>
+            <iyz>0</iyz>
+            <izz>2.98417</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_fixed_joint_lump__buttom_1_collision_1'>
+          <pose>-1.2 0 -1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_fixed_joint_lump__left_1_collision_2'>
+          <pose>-2.4 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_fixed_joint_lump__upper_collision_3'>
+          <pose>-1.2 0 1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_fixed_joint_lump__buttom_1_visual_1'>
+          <pose>-1.2 0 -1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_fixed_joint_lump__left_1_visual_2'>
+          <pose>-2.4 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_fixed_joint_lump__upper_visual_3'>
+          <pose>-1.2 0 1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>0</gravity>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>7.95607 -1.97967 2.00062 0.000705 0.000587 1.57</pose>
+    </model>
+    <model name='gate_1_clone_0_clone_clone_0'>
+      <link name='base'>
+        <inertial>
+          <pose>-1.2 0 0 0 -0 0</pose>
+          <mass>4</mass>
+          <inertia>
+            <ixx>6.07667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>8.89417</iyy>
+            <iyz>0</iyz>
+            <izz>2.98417</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_fixed_joint_lump__buttom_1_collision_1'>
+          <pose>-1.2 0 -1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_fixed_joint_lump__left_1_collision_2'>
+          <pose>-2.4 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='base_fixed_joint_lump__upper_collision_3'>
+          <pose>-1.2 0 1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>100000</kp>
+                <kd>100000</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>0.1</mu>
+                <mu2>0.1</mu2>
+                <fdir1>1 0 0</fdir1>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_fixed_joint_lump__buttom_1_visual_1'>
+          <pose>-1.2 0 -1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_fixed_joint_lump__left_1_visual_2'>
+          <pose>-2.4 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>4</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='base_fixed_joint_lump__upper_visual_3'>
+          <pose>-1.2 0 1.7 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>3</length>
+              <radius>0.3</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>0</gravity>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>6.09122 -5.36025 2.00062 0.000705 0.000587 1.57</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>198 68000000</sim_time>
+      <real_time>198 526077743</real_time>
+      <wall_time>1683205870 608115228</wall_time>
+      <iterations>198068</iterations>
+      <model name='gate_1'>
+        <pose>1.64222 3.64313 2.00062 0.000705 0.000588 -0.088378</pose>
+        <scale>1 1 1</scale>
+        <link name='base'>
+          <pose>1.64222 3.64313 2.00062 0.000705 0.000588 -0.088378</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='gate_1_clone'>
+        <pose>-0.8 0.5 2.00101 -0.000859 -0.000189 -0.084831</pose>
+        <scale>1 1 1</scale>
+        <link name='base'>
+          <pose>-0.8 0.5 2.00101 -0.000859 -0.000189 -0.084831</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='gate_1_clone_0'>
+        <pose>3.6 5.69 2.00062 0.000705 0.000588 1.57</pose>
+        <scale>1 1 1</scale>
+        <link name='base'>
+          <pose>3.6 5.69 2.00062 0.000705 0.000588 1.57</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='gate_1_clone_0_clone'>
+        <pose>6.2 7.1 2.00062 0.000705 0.000587 1.57</pose>
+        <scale>1 1 1</scale>
+        <link name='base'>
+          <pose>6.2 7.1 2.00062 0.000705 0.000587 1.57</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='gate_1_clone_0_clone_clone'>
+        <pose>9.2 5.9 2.00062 0.000705 0.000587 1.57</pose>
+        <scale>1 1 1</scale>
+        <link name='base'>
+          <pose>9.2 5.9 2.00062 0.000705 0.000587 1.57</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='gate_1_clone_0_clone_clone_0'>
+        <pose>13.2 1.49 2.00062 0.000705 0.000587 1.57</pose>
+        <scale>1 1 1</scale>
+        <link name='base'>
+          <pose>13.2 1.49 2.00062 0.000705 0.000587 1.57</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>28.3154 -31.9639 11.9754 0 0.138748 2.19148</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>

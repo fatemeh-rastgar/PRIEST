@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/> 
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+
+  <arg name="world_name" default="$(find priest)/worlds/corridor_3.world" />
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+  <arg name="paused" value="$(arg paused)"/>
+  <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+  <arg name="gui" value="$(arg gui)"/>
+  <arg name="headless" value="$(arg headless)"/>
+  <arg name="debug" value="$(arg debug)"/>
+  <arg name="world_name" value="$(arg world_name)" />
+  </include>
+
+  <arg name="vlp_laser" default="false" />
+  <arg name="default_config" value="vlp_laser" if="$(arg vlp_laser)" />
+  <arg name="default_config" value="front_laser" unless="$(arg vlp_laser)" />
+  <arg name="config" default="$(arg default_config)" />
+  <arg name="joystick" default="false" />
+
+  <!-- Spawn Jackal -->
+  <include file="$(find jackal_gazebo)/launch/spawn_jackal.launch">
+   <arg name="x" value="1.0" />
+    <arg name="y" value="2" />
+    <arg name="z" value="1.0" />
+    <arg name="yaw" value="1.57" />
+    <arg name="config" value="$(arg config)" />
+    <arg name="joystick" value="$(arg joystick)" />
+  </include>
+
+  <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depthimage_to_laserscan">
+    
+    <param name="scan_height" value="5"/>
+    <param name="range_min" value="0.25"/>
+    <param name="range_max" value="1.0"/>
+    <param name="angle_min" value="-100 * (pi/180)"/>
+    <param name="angle_max" value="100 * (pi/180)"/>
+    <param name = "angle_increment" value = "1 * (pi/180)"/>
+    <param name = "scan_time" value = "0.01" />
+    <remap from="scan" to="/front/scan"/> 
+    <param name="output_frame_id" type="str"    value="world"/> 
+  </node>
+
+  <!-- laser scan-->
+  <node pkg="priest" type="scan_obstacles.py" output="screen" name="points" />
+
+    <node pkg="laser_assembler" type="laser_scan_assembler" output="screen"  name="laser_scan_assembler">
+    <remap from="scan" to="/front/scan"/>
+    <param name="tf_cache_time_secs" type="double" value="10.0" />
+    <param name="max_scans" type="int" value="1" />
+    <param name="ignore_laser_skew" type="bool" value="true" />
+    <param name="fixed_frame" type="string" value="world" />
+  </node>
+
+  
+  <node name="jackal_tf" pkg="priest" type="tf_transform.py" />
+
+
+  <arg name="obstacle_1" default="$(find priest)/urdf/cylinder_move_1.urdf" />
+  <arg name="obstacle_2" default="$(find priest)/urdf/cylinder_move_2.urdf" />
+  <arg name="obstacle_3" default="$(find priest)/urdf/cylinder_move_3.urdf" />
+  <arg name="obstacle_4" default="$(find priest)/urdf/cylinder_move_4.urdf" />
+  <arg name="obstacle_5" default="$(find priest)/urdf/cylinder_move_5.urdf" />
+  <arg name="obstacle_6" default="$(find priest)/urdf/cylinder_move_6.urdf" />
+  <arg name="obstacle_7" default="$(find priest)/urdf/cylinder_move_7.urdf" />
+  <arg name="obstacle_8" default="$(find priest)/urdf/cylinder_move_8.urdf" />
+  <arg name="obstacle_9" default="$(find priest)/urdf/cylinder_move_9.urdf" />
+  <arg name="obstacle_10" default="$(find priest)/urdf/cylinder_move_10.urdf" />
+ 
+  <arg name="obs_1" default="obstacle_1" />
+  <arg name="obs_2" default="obstacle_2" />
+  <arg name="obs_3" default="obstacle_3" />
+  <arg name="obs_4" default="obstacle_4" />
+  <arg name="obs_5" default="obstacle_5" />
+  <arg name="obs_6" default="obstacle_6" />
+  <arg name="obs_7" default="obstacle_7" />
+  <arg name="obs_8" default="obstacle_8" />
+  <arg name="obs_9" default="obstacle_9" />
+  <arg name="obs_10" default="obstacle_10" />
+ 
+  <arg name="x_1" default="1.23"/>
+  <arg name="y_1" default="11.25" />
+  <arg name="z_1" default="0.0" />
+  <arg name="roll_1" default="0.0"/>
+  <arg name="pitch_1" default="0"/>
+  <arg name="yaw_1" default="0" />
+
+  <arg name="x_2" default="2.38"/>
+  <arg name="y_2" default="8.16" />
+  <arg name="z_2" default="0.0" />
+  <arg name="roll_2" default="0.0"/>
+  <arg name="pitch_2" default="0"/>
+  <arg name="yaw_2" default="0" />
+
+  <arg name="x_3" default="2.38"/>
+  <arg name="y_3" default="13.32" />
+  <arg name="z_3" default="0.0" />
+  <arg name="roll_3" default="0.0"/>
+  <arg name="pitch_3" default="0"/>
+  <arg name="yaw_3" default="0" />
+
+  <arg name="x_4" default="1.53" />
+  <arg name="y_4" default="10.41" />
+  <arg name="z_4" default="0.0" />
+  <arg name="roll_4" default="0.0"/>
+  <arg name="pitch_4" default="0"/>
+  <arg name="yaw_4" default="0" />
+
+  <arg name="x_5" default="2.46"/>
+  <arg name="y_5" default="6.66" />
+  <arg name="z_5" default="0.0" />
+  <arg name="roll_5" default="0.0"/>
+  <arg name="pitch_5" default="0"/>
+  <arg name="yaw_5" default="0" />
+
+  <arg name="x_6" default="3.67"/>
+  <arg name="y_6" default="10.71" />
+  <arg name="z_6" default="0.0" />
+  <arg name="roll_6" default="0.0"/>
+  <arg name="pitch_6" default="0"/>
+  <arg name="yaw_6" default="0" />
+    
+  <arg name="x_7" default="2.15" />
+  <arg name="y_7" default="11.24" />
+  <arg name="z_7" default="0.0" />
+  <arg name="roll_7" default="0.0"/>
+  <arg name="pitch_7" default="0"/>
+  <arg name="yaw_7" default="0" />
+
+  <arg name="x_8" default="0.7"/>
+  <arg name="y_8" default="9.34" />
+  <arg name="z_8" default="0.0" />
+  <arg name="roll_8" default="0.0"/>
+  <arg name="pitch_8" default="0"/>
+  <arg name="yaw_8" default="0" />
+
+  <arg name="x_9" default="0.89" />
+  <arg name="y_9" default="6.96" />
+  <arg name="z_9" default="0.0" />
+  <arg name="roll_9" default="0.0"/>
+  <arg name="pitch_9" default="0"/>
+  <arg name="yaw_9" default="0" />
+
+  <arg name="x_10" default="1.49"/>
+  <arg name="y_10" default="9.57" />
+  <arg name="z_10" default="0.0" />
+  <arg name="roll_10" default="0.0"/>
+  <arg name="pitch_10" default="0"/>
+  <arg name="yaw_10" default="0" />
+
+
+  <param name="robot_description_1" command="cat $(arg obstacle_1)" />
+  <node name="$(arg obs_1)_urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+  args="-urdf -x $(arg x_1) -y $(arg y_1) -z $(arg z_1) -R $(arg roll_1) -P $(arg pitch_1) -Y $(arg yaw_1) -model $(arg obs_1) -param robot_description_1"/>
+
+  <param name="robot_description_2" command="cat $(arg obstacle_2)" />
+  <node name="$(arg obs_2)_urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+  args="-urdf -x $(arg x_2) -y $(arg y_2) -z $(arg z_2) -R $(arg roll_2) -P $(arg pitch_2) -Y $(arg yaw_2) -model $(arg obs_2) -param robot_description_2"/>
+
+  <param name="robot_description_3" command="cat $(arg obstacle_3)" />
+  <node name="$(arg obs_3)_urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+  args="-urdf -x $(arg x_3) -y $(arg y_3) -z $(arg z_3) -R $(arg roll_3) -P $(arg pitch_3) -Y $(arg yaw_3) -model $(arg obs_3) -param robot_description_3"/>
+
+ <param name="robot_description_4" command="cat $(arg obstacle_4)" />
+  <node name="$(arg obs_4)_urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+  args="-urdf -x $(arg x_4) -y $(arg y_4) -z $(arg z_4) -R $(arg roll_4) -P $(arg pitch_4) -Y $(arg yaw_4) -model $(arg obs_4) -param robot_description_4"/>
+
+  <param name="robot_description_5" command="cat $(arg obstacle_5)" />
+  <node name="$(arg obs_5)_urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+  args="-urdf -x $(arg x_5) -y $(arg y_5) -z $(arg z_5) -R $(arg roll_5) -P $(arg pitch_5) -Y $(arg yaw_5) -model $(arg obs_5) -param robot_description_5"/>
+
+  <param name="robot_description_6" command="cat $(arg obstacle_6)" />
+  <node name="$(arg obs_6)_urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+  args="-urdf -x $(arg x_6) -y $(arg y_6) -z $(arg z_6) -R $(arg roll_6) -P $(arg pitch_6) -Y $(arg yaw_6) -model $(arg obs_6) -param robot_description_6"/>
+
+  <param name="robot_description_7" command="cat $(arg obstacle_7)" />
+  <node name="$(arg obs_7)_urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+  args="-urdf -x $(arg x_7) -y $(arg y_7) -z $(arg z_7) -R $(arg roll_7) -P $(arg pitch_7) -Y $(arg yaw_7) -model $(arg obs_7) -param robot_description_7"/>
+
+  <param name="robot_description_8" command="cat $(arg obstacle_8)" />
+  <node name="$(arg obs_8)_urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+  args="-urdf -x $(arg x_8) -y $(arg y_8) -z $(arg z_8) -R $(arg roll_8) -P $(arg pitch_8) -Y $(arg yaw_8) -model $(arg obs_8) -param robot_description_8"/>
+
+  <param name="robot_description_9" command="cat $(arg obstacle_9)" />
+  <node name="$(arg obs_9)_urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+  args="-urdf -x $(arg x_9) -y $(arg y_9) -z $(arg z_9) -R $(arg roll_9) -P $(arg pitch_9) -Y $(arg yaw_9) -model $(arg obs_9) -param robot_description_9"/>
+
+  <param name="robot_description_10" command="cat $(arg obstacle_10)" />
+  <node name="$(arg obs_10)_urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+  args="-urdf -x $(arg x_10) -y $(arg y_10) -z $(arg z_10) -R $(arg roll_10) -P $(arg pitch_10) -Y $(arg yaw_10) -model $(arg obs_10) -param robot_description_10"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="obs_1_trans" args="0.0 0 0.5 0 0 0 box_1_base_footprint box_1 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="obs_1_odom_trans" args="0.0 0 0 0 0 0 world obs_1/odom 100"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="obs_2_trans" args="0.0 0 0.5 0 0 0 box_2_base_footprint box_2 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="obs_2_odom_trans" args="0.0 0 0 0 0 0 world obs_2/odom 100"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="obs_3_trans" args="0.0 0 0.5 0 0 0 box_3_base_footprint box_3 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="obs_3_odom_trans" args="0.0 0 0 0 0 0 world obs_3/odom 100"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="obs_4_trans" args="0.0 0 0.5 0 0 0 box_4_base_footprint box_4 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="obs_4_odom_trans" args="0.0 0 0 0 0 0 world obs_4/odom 100"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="obs_5_trans" args="0.0 0 0.5 0 0 0 box_5_base_footprint box_5 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="obs_5_odom_trans" args="0.0 0 0 0 0 0 world obs_5/odom 100"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="obs_6_trans" args="0.0 0 0.5 0 0 0 box_6_base_footprint box_6 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="obs_6_odom_trans" args="0.0 0 0 0 0 0 world obs_6/odom 100"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="obs_7_trans" args="0.0 0 0.5 0 0 0 box_7_base_footprint box_7 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="obs_7_odom_trans" args="0.0 0 0 0 0 0 world obs_7/odom 100"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="obs_8_trans" args="0.0 0 0.5 0 0 0 box_8_base_footprint box_8 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="obs_8_odom_trans" args="0.0 0 0 0 0 0 world obs_8/odom 100"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="obs_9_trans" args="0.0 0 0.5 0 0 0 box_9_base_footprint box_9 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="obs_9_odom_trans" args="0.0 0 0 0 0 0 world obs_9/odom 100"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="obs_10_trans" args="0.0 0 0.5 0 0 0 box_10_base_footprint box_10 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="obs_10_odom_trans" args="0.0 0 0 0 0 0 world obs_10/odom 100"/>
+
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find priest)/config/dynamic_env.rviz">
+    <param name="fixed_frame" value="/map"/>
+  </node>
+      
+</launch>
+
