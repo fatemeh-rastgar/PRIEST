@@ -34,10 +34,12 @@ plus the following libraries and repositories
 
 **RUN TEB/DWA planner**
 * for Barn dataset:
-            roslaunch comparison barn_world.launch
-            roslaunch comparison map_less_navigation.launch
-            rosrun comparison send_goal.py  
+  
+        roslaunch comparison barn_world.launch
+        roslaunch comparison map_less_navigation.launch
+        rosrun comparison send_goal.py  
  
+Note that in mapl_less_navigation.launch file, we can choose if we use TEB planner or DWA planner.
 
 We use the laser scan to observe the obstacles, so we update the following file in the jackal package.
  * The costmap_common_params.yaml
