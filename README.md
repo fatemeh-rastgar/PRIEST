@@ -23,6 +23,7 @@ plus the following libraries and repositories
 |Sampling-based method| log-MPPI |(https://github.com/IhabMohamed/log-MPPI_ros)|
 
 ** Run planner on Barn dataset ***
+
       roslaunch priest clearpath_launch.launch
       rosrun priest planner_holonomic.py
       
