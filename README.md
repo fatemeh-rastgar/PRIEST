@@ -22,10 +22,15 @@ plus the following libraries and repositories
 |gradient-based solver |ROCKIT |(https://gitlab.kuleuven.be/meco-software/rockit)|
 |Sampling-based method| log-MPPI |(https://github.com/IhabMohamed/log-MPPI_ros)|
 
-** Run planner on Barn dataset ***
+** Run planner on Barn dataset **
 
       roslaunch priest clearpath_launch.launch
-      
       rosrun priest planner_holonomic.py
+
+** Run planner on Dynamic environment**
+
+      roslaunch priest nonhol_clearpath.launch
+      rosrun priest planner_nonhol_dy.py
+      
       
 
