@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="model" default="robotont_with_realsense"/>
+
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find robotont_nav)/worlds/world_216.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <include file="$(find robotont_nav)/launch/upload_description.launch">
+      <arg name="model" default="$(arg model)"/>
+  </include>
+  <include file="$(find robotont_nav)/launch/spawn_robotont_urdf.launch" >
+      <arg name="x_pose" value="-0.6" />
+      <arg name="y_pose" value="1" />
+      <arg name="yaw" value="0" />
+  </include>
+
+  <arg name="start_x" default="-0.6" />
+  <arg name="start_y" default="1.0" /> 
+  <arg name="yaw" default="1.5708" />
+  <arg name="front_laser" default="true" />
+  <arg name="default_config" value="front_laser" if="$(arg front_laser)" />
+  <arg name="default_config" value="base" unless="$(arg front_laser)" />
+  <!-- end of hack -->
+
+  <!-- Configuration of Jackal which you would like to simulate.
+       See jackal_description for details. -->
+  <!-- <arg name="config" default="$(arg default_config)" /> -->
+
+  <!-- Optionally enable teleop for the simulation -->
+  <!-- <arg name="joystick" default="false" /> -->
+
+  <!-- Spawn Jackal -->
+  <!-- <include file="$(find jackal_gazebo)/launch/spawn_jackal.launch">
+    <arg name="x" value="$(arg start_x)" />
+    <arg name="y" value="$(arg start_y)" />
+    <arg name="z" value="0.0" />
+    <arg name="yaw" value="$(arg yaw)" />
+    <arg name="config" value="$(arg config)" />
+    <arg name="joystick" value="$(arg joystick)" />
+  </include> -->
+
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robotont_nav)/config/robot.rviz" output="screen"/>
+</launch>

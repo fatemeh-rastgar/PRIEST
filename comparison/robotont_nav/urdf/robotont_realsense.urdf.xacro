@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="robotont">
+    <xacro:include filename="$(find realsense2_description)/urdf/_d435i.urdf.xacro" />
+    <xacro:include filename="$(find robotont_nav)/urdf/robotont_base.urdf.xacro"/>
+    <xacro:arg name= "add_plug" default="false"/>
+    <xacro:arg name= "simulated" default="false"/>
+    <!-- Camera assembly -->
+    <!-- <link name="${prefix}camera_assembly_link1">
+        <visual>
+            <geometry>
+                <mesh scale="0.001 0.001 0.001" filename="package://robotont_nuc_description/meshes/camera_assembly_part1.stl"/>
+            </geometry>
+            <material name="frame_material">
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+    </link>
+    <joint name="${prefix}camera_assembly_joint1" type="fixed">
+        <parent link="${prefix}base_footprint"/>
+        <child link="${prefix}camera_assembly_link1"/>
+        <origin xyz="0 0 0.0125" rpy="0 0 ${pi/2}"/>
+    </joint>
+    <link name="${prefix}camera_assembly_link2">
+        <visual>
+            <geometry>
+                <mesh scale="0.001 0.001 0.001" filename="package://robotont_nuc_description/meshes/camera_assembly_part2.stl"/>
+            </geometry>
+            <material name="base_material">
+                <color rgba="1 1 1 0.8"/>
+            </material>
+        </visual>
+    </link>
+    <joint name="${prefix}camera_assembly_joint2" type="fixed">
+        <parent link="${prefix}base_footprint"/>
+        <child link="${prefix}camera_assembly_link2"/>
+        <origin xyz="0 0 0.0125" rpy="0 0 ${pi/2}"/>
+    </joint> -->
+    <!-- Realsense -->
+    <xacro:if value="$(arg simulated)">
+        <xacro:sensor_d435i name="${prefix}camera" parent="${prefix}base_link" use_nominal_extrinsics="true">
+            <origin xyz="0 0 0.19" rpy="0 -1.57 0"/>
+        </xacro:sensor_d435i>
+    </xacro:if>
+    <xacro:unless value="$(arg simulated)">
+        <xacro:sensor_d435i name="${prefix}camera" parent="${prefix}base_link" use_nominal_extrinsics="false">
+            <origin xyz="0 0 0.19" rpy="0 -1.57 0"/>
+        </xacro:sensor_d435i>
+    </xacro:unless>
+    <!-- Computer -->
+    <link name="${prefix}computer_link">
+        <visual>
+            <geometry>
+                <box size="0.11 0.11 0.04"/>
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <material name="computer_material">
+                <color rgba=".0 .0 1 0.5"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.11 0.11 0.04"/>
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+        </collision>
+    </link>
+
+    <joint name="${prefix}computer_joint" type="fixed">
+        <parent link="${prefix}base_link"/>
+        <child link="${prefix}computer_link"/>
+        <origin xyz="-0.01 0 0.085" rpy="0 0 0"/>
+    </joint>
+
+
+    <!-- Hokuyo Laser -->
+    <joint name="${prefix}hokuyo_joint" type="fixed">
+        <axis xyz="0 1 0" />
+        <origin xyz="0 0 0.05" rpy="0 0 0"/>
+        <parent link="${prefix}computer_link"/>
+        <child link="${prefix}hokuyo_link"/>
+    </joint>
+
+    <link name="${prefix}hokuyo_link">
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+        <box size="0.1 0.1 0.1"/>
+            </geometry>
+        </collision>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://robotont_gazebo/meshes/hokuyo.dae"/>
+            </geometry>
+        </visual>
+
+        <inertial>
+            <mass value="1e-5" />
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+        </inertial>
+    </link>
+
+    <gazebo reference="${prefix}computer_link">
+        <material>Gazebo/Black</material>
+    </gazebo>  
+    
+    <gazebo reference="${prefix}camera_link">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="${prefix}hokuyo_link">
+        <sensor type="ray" name="head_hokuyo_sensor">
+        <!-- <sensor type="gpu_ray" name="head_hokuyo_sensor"> -->
+            <pose>0 0 0 0 0 0</pose>
+            <visualize>false</visualize>
+            <update_rate>40</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>720</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-3.14</min_angle>
+                        <max_angle>3.14</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                    <min>0.10</min>
+                    <max>30.0</max>
+                    <resolution>0.0048</resolution>
+                </range>
+                <noise>
+                    <type>gaussian</type>
+
+                    <mean>0.0</mean>
+                    <stddev>0.01</stddev>
+                </noise>
+            </ray>
+            <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+            <!-- <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so"> -->
+                <topicName>scan</topicName>
+                <frameName>hokuyo_link</frameName>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+</robot>
