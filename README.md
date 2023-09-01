@@ -20,7 +20,7 @@ plus the following libraries and repositories
 |Plot 3d trajectories|mayavi|(https://docs.enthought.com/mayavi/mayavi/installation.html)|
 |gradient-based solver | FATROP |(git@gitlab.kuleuven.be:robotgenskill/fatrop/fatrop.git)| 
 |gradient-based solver |ROCKIT |(https://gitlab.kuleuven.be/meco-software/rockit)|
-|Sampling-based method| log-MPPI |(https://github.com/IhabMohamed/log-MPPI_ros)|
+|Sampling-based method and Jackal| log-MPPI |(https://github.com/IhabMohamed/log-MPPI_ros)|
 
 **Run planner on Barn dataset**
 
