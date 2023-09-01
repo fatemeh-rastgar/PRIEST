@@ -1,7 +1,7 @@
 # PRIEST
 Projection Guided Sampling-Based Optimization For Autonomous Navigation 
 
-Repository associated with the paper **"PRIEST: Projection Guided Sampling-Based Optimization For Autonomous Navigation."** Arxiv pre-print can be found here (link).
+Repository associated with the paper **"PRIEST: Projection Guided Sampling-Based Optimization For Autonomous Navigation."** Arxiv pre-print can be found here (link). Videos and demos can be found [here](https://sites.google.com/view/priest-optimization)
 
 Contacts: Fatemeh Rastgar (fatemeh.rastgar2@gmail.com), Arun Kumar Singh (aks1812@gmail.com)
 
