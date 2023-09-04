@@ -50,22 +50,32 @@ and to use the DWA planner:
 
       <include file="$(find robotont_nav)/launch/move_base.launch">
       
+3- Launch MPPI/ log-MPPI:
+
+      
 
 
 **Running the Planner on a Dynamic Environment**
 
+1- Launch PRIEST:
+
       roslaunch priest nonhol_clearpath.launch
       rosrun priest planner_nonhol_dy.py
 
+2- Launch CEM:
 
- 
+3- Launch TEB/DWA Planner
+
+4- Launch MPPI/ log-MPPI
 
 
-We use the laser scan to observe the obstacles, so we update the following file in the jackal package.
- * The costmap_common_params.yaml
- * 
-   
 
+
+ We use laser scans to observe obstacles, so make sure to update the following files in the Jackal package:
+
+- costmap_common_params.yaml
+  
+If you have any questions or need further assistance, please feel free to contact us.
       
       
 
