@@ -68,7 +68,11 @@ Please change the value from "true" to "false" in the following command within t
 
 2- Launch CEM:
 
+      roslaunch priest nonhol_clearpath.launch
+      rosrun priest planner_cem_dynamic.py
+
 3- Launch TEB/DWA Planner
+      
 
 4- Launch MPPI/ log-MPPI
 
