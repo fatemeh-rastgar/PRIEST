@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="robotont">
     <xacro:include filename="$(find realsense2_description)/urdf/_d435i.urdf.xacro" />
-    <xacro:include filename="$(find robotont_nav)/urdf/robotont_base.urdf.xacro"/>
+    <xacro:include filename="$(find compare)/urdf/robotont_base.urdf.xacro"/>
     <xacro:arg name= "add_plug" default="false"/>
     <xacro:arg name= "simulated" default="false"/>
     <!-- Camera assembly -->

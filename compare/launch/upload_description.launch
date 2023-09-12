@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<launch>
+  <arg name="ns" default=""/>
+  <arg name="prefix" default="$(arg ns)"/> 
+
+  <arg name="model" default="robotont_with_realsense"/>
+
+  <param name="robot_description" command="$(find xacro)/xacro $(find compare)/urdf/$(arg model).xacro prefix:=$(arg prefix)"/>
+
+</launch>

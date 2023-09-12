@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <launch>
+
   <arg name="model" default="robotont_with_realsense"/>
-
-
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find robotont_nav)/worlds/world_216.world"/>
+    <!-- <arg name="world_name" value="$(find compare)/worlds/world_216.world"/> -->
+    <arg name="world_name" default="$(find priest)/worlds/corridor_3.world" />
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" value="true"/>
@@ -12,14 +12,14 @@
     <arg name="debug" value="false"/>
   </include>
 
-  <include file="$(find robotont_nav)/launch/upload_description.launch">
+  <include file="$(find compare)/launch/upload_description.launch">
       <arg name="model" default="$(arg model)"/>
   </include>
-  <include file="$(find robotont_nav)/launch/spawn_robotont_urdf.launch" >
+  <include file="$(find compare)/launch/spawn_robotont_urdf.launch" >
       <arg name="x_pose" value="-0.6" />
       <arg name="y_pose" value="1" />
       <arg name="yaw" value="0" />
-  </include>
+  </include> 
 
   <arg name="start_x" default="-0.6" />
   <arg name="start_y" default="1.0" /> 
@@ -46,6 +46,7 @@
     <arg name="joystick" value="$(arg joystick)" />
   </include> -->
 
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find compare)/config/robot.rviz" output="screen"/>
 
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robotont_nav)/config/robot.rviz" output="screen"/>
+
 </launch>
