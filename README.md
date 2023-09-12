@@ -51,9 +51,13 @@ and to use the DWA planner:
       <include file="$(find robotont_nav)/launch/move_base.launch">
       
 3- Launch MPPI/ log-MPPI:
+      roslaunch priest clearpath_launch.launch
+      roslaunch comparison control_stage_robotont.launch
+      rosrun comparison send_goal.py
 
-      
+Please change the value from "true" to "false" in the following command within the control_stage_robotont.launch file to select the log-MPPI or MPPI method: 
 
+       <arg name="normal_dist" default="false" />
 
 **Running the Planner on a Dynamic Environment**
 
