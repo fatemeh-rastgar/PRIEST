@@ -25,6 +25,7 @@ We have also utilized the following libraries and repositories in our study:
 |gradient-based solver | FATROP |(git@gitlab.kuleuven.be:robotgenskill/fatrop/fatrop.git)| 
 |gradient-based solver |ROCKIT |(https://gitlab.kuleuven.be/meco-software/rockit)|
 |Sampling-based method and Jackal| log-MPPI |(https://github.com/IhabMohamed/log-MPPI_ros)|
+|Holonomic robot |(robootont_description, robotont_gazebo)| (https://github.com/robotont)|
 
 **Running the First Benchmark - Comparison on BARN Dataset**
 
