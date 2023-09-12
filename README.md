@@ -39,13 +39,13 @@ To run these comparisons, follow these steps:
 
 2- Launch DWA/TEB Planner
   
-        roslaunch comparison barn_world.launch
-        roslaunch comparison map_less_navigation.launch
-        rosrun comparison send_goal.py
+        roslaunch compare barn_world.launch
+        roslaunch compare map_less_navigation.launch
+        rosrun compare send_goal.py
 
 Note that in the comparison/launch/map_less_navigation.launch file, you can choose whether to use the TEB planner or the DWA planner. To use the planner, use:
 
-      <include file="$(find robotont_nav)/launch/move_base_teb.launch">
+      <include file="$(find compare)/launch/move_base_teb.launch">
       
 and to use the DWA planner:
 
@@ -53,8 +53,8 @@ and to use the DWA planner:
       
 3- Launch MPPI/ log-MPPI:
       roslaunch priest clearpath_launch.launch
-      roslaunch comparison control_stage_robotont.launch
-      rosrun comparison send_goal.py
+      roslaunch compare control_stage_robotont.launch
+      rosrun compare send_goal.py
 
 Please change the value from "true" to "false" in the following command within the control_stage_robotont.launch file to select the log-MPPI or MPPI method: 
 
