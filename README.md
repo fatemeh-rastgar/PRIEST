@@ -1,4 +1,4 @@
-Welcome to the **PRIEST** repository! This repository is associated with the paper **"PRIEST: Projection Guided Sampling-Based Optimization For Autonomous Navigation."**. Additionally, we have provided videos and demos, which can be accessed [here](https://sites.google.com/view/priest-optimization)
+Welcome to the **PRIEST** repository! This repository is associated with the paper **"PRIEST: Projection Guided Sampling-Based Optimization For Autonomous Navigation."**. Additionally, we have provided videos and demos, which can be accessed [here](https://sites.google.com/view/priest-optimization). 
 
 **Contacts:**
 - Fatemeh Rastgar (fatemeh.rastgar2@gmail.com)
@@ -60,6 +60,9 @@ Please change the value from "true" to "false" in the following command within t
        <arg name="normal_dist" default="false" />
 
 **Running the Planner on a Dynamic Environment**
+
+For this benchmark, we conducted comparisons between several planners, including baseline CEM, DWA, TEB, MPPI, log-MPPI, and our PRIEST method.
+To run these comparisons, follow these steps:
 
 1- Launch PRIEST:
 
