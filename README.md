@@ -50,7 +50,7 @@ Note that in the comparison/launch/map_less_navigation.launch file, you can choo
       
 and to use the DWA planner:
 
-      <include file="$(find robotont_nav)/launch/move_base.launch">
+      <include file="$(find compare)/launch/move_base.launch">
       
 3- Launch MPPI/ log-MPPI:
       roslaunch priest clearpath_launch.launch
@@ -77,11 +77,12 @@ To run these comparisons, follow these steps:
       rosrun priest planner_cem_dynamic.py
 
 3- Launch TEB/DWA Planner
-      
+
+      will be addded
 
 4- Launch MPPI/ log-MPPI
 
-
+      will be added 
 
 
  We use laser scans to observe obstacles, so make sure to update the following files in the Jackal package:
