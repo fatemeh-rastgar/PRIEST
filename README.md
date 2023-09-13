@@ -90,8 +90,9 @@ To run these comparisons, follow these steps:
 
 Please note that the following changes are required in send_goal.py 
 
-Subscriber topic: "/odom" to "/ground_truth/odom"
-goal.target_pose.header.frame_id should be "/map"
+- Subscriber topic: "/odom" to "/ground_truth/odom"
+  
+- goal.target_pose.header.frame_id should be "/map"
 
 
 
