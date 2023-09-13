@@ -82,7 +82,16 @@ To run these comparisons, follow these steps:
 
 4- Launch MPPI/ log-MPPI
 
-      will be added 
+      roslaunch compare clear_path_dynamic.launch 
+      roslaunch mppi_control control_stage.launch
+      rosrun compare send_obs_velocities.py
+      rosrun compare send_goal.py
+
+Please note that the following changes are required in send_goal.py 
+
+Subscriber topic: "/odom" to "/ground_truth/odom"
+goal.target_pose.header.frame_id should be "/map"
+
 
 
  We use laser scans to observe obstacles, so make sure to update the following files in the Jackal package:
