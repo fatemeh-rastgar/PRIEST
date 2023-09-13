@@ -53,6 +53,7 @@ class navigation_movebase():
     def movebase_client(self, ):
 
 
+        # rospy.Subscriber("/ground_truth/odom", Odometry, self.Callback)
         rospy.Subscriber("/odom", Odometry, self.Callback)
         client = actionlib.SimpleActionClient('move_base',MoveBaseAction)
         client.wait_for_server()
