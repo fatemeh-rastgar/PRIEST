@@ -99,6 +99,20 @@ Please note that the following changes are required in send_goal.py
  We use laser scans to observe obstacles, so make sure to update the following files in the Jackal package:
 
 - costmap_common_params.yaml
+
+**Point-to-point-navigation**
+### 2D Comparison
+To perform a 2D comparison, follow these steps:
+
+1. Navigate to the `2d_comparison` folder:
+2. Run the `main.py` script:
+
+### 3D Comparison
+To perform a 2D comparison, follow these steps:
+
+1. Navigate to the `3d_comparison` folder:
+2. Run the `main.py` script:
+
   
 If you have any questions or need further assistance, please feel free to contact us.
       
