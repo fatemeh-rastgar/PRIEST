@@ -1,10 +1,12 @@
+# PRIEST
 Welcome to the **PRIEST** repository! This repository is associated with the paper **"PRIEST: Projection Guided Sampling-Based Optimization For Autonomous Navigation."**. Additionally, we have provided videos and demos, which can be accessed [here](https://sites.google.com/view/priest-optimization). 
 
 ## Table of Contents
 - [Contacts](#Contacts)
 - [General Requirements](#General-Requirements)
-- [Point-to-point-navigation](#Point-to-point-navigation)
 - [Running the First Benchmark - Comparison on BARN Dataset](#Running-the-First-Benchmark-Comparison-on-BARN-Dataset)
+- [Running the Planner on a Dynamic Environment](Running-the-Planner-on-a-Dynamic-Environment)
+- [Point-to-point-navigation](#Point-to-point-navigation)
 
 
 ## Contacts
@@ -12,8 +14,6 @@ Welcome to the **PRIEST** repository! This repository is associated with the pap
 - Arun Kumar Singh (aks1812@gmail.com)
 
 ## General Requirements
-
-
 
 To run the codes, you'll need the following dependencies:
 - ROS
@@ -70,7 +70,7 @@ Please change the value from "true" to "false" in the following command within t
 
        <arg name="normal_dist" default="false" />
 
-**Running the Planner on a Dynamic Environment**
+## Running the Planner on a Dynamic Environment
 
 For this benchmark, we conducted comparisons between several planners, including baseline CEM, DWA, TEB, MPPI, log-MPPI, and our PRIEST method.
 To run these comparisons, follow these steps:
