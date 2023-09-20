@@ -1,16 +1,11 @@
 
 #!/usr/bin/env python3
 
-
-
-
 import numpy as np
 import matplotlib.pyplot as plt
 import jax.numpy as jnp
 import jax
 import bernstein_coeff_order10_arbitinterval
-
-import CEM
 import matplotlib.pyplot as plt
 from scipy.io import loadmat
 import scipy
@@ -25,12 +20,11 @@ from rockit import *
 from casadi import vertcat, sumsqr, horzcat
 from scipy.io import loadmat
 import scipy
-# import random as rnd
-# from pylab import *
 import casadi as cs
 import string
 import casadi_solver
 import expert
+import CEM
 
 
 class planning_traj():
@@ -94,8 +88,6 @@ class planning_traj():
                                  9, 2, 2, 2, -1, -1, -1, 5, 5, 5, 10, 10, 10, 5, 5, 5, 9, 9, 9, 8, 8, 8, 5, 5, 5, 2, 2, 2])
 
         i = 116
-
-       
 
         self.x_init = x_init_arr[i]
         self.y_init = y_init_arr[i]
@@ -195,25 +187,16 @@ class planning_traj():
                 start = time.time()
                 x_best_our_method, y_best_our_method = Prob_our.compute_cem(key, initial_state, self.x_fin, self.y_fin, lamda_x_our_method, lamda_y_our_method, x_obs_trajectory, y_obs_trajectory, x_obs_trajectory_proj, y_obs_trajectory_proj, sol_x_bar, sol_y_bar, x_guess, y_guess,  xdot_guess, ydot_guess, xddot_guess, yddot_guess, self.x_waypoint,  self.y_waypoint, arc_vec, c_mean, c_cov )
                 Time_our = time.time()-start
-                
-               
 
-                ################## Previous method
                 #######CEM_Base
-
                 start = time.time()
                 x_initial_compare, y_initial_compare, x_samples_cem, y_samples_cem, xdot_samples_cem, ydot_samples_cem, xddot_samples_cem, yddot_samples_cem = prob_CEM.compute_cem_part(initial_state, x_obs_trajectory, y_obs_trajectory, self.vx_des, self.vy_des,  self.v_des, self.x_waypoint, self.y_waypoint,  x_obs_trajectory, y_obs_trajectory, lamda_x_cem, lamda_y_cem, self.x_fin, self.y_fin, sol_x_bar, sol_y_bar, c_mean, c_cov, x_guess, y_guess, arc_vec )
                 Time_CEM = time.time()-start
-              
 
-        
                 ############## CEM + Projection
 
                 start = time.time()
-
                 sol_x_best, sol_y_best, x_best, y_best, x, y = prob_opt.SolveOpt1(self.x_waypoint, self.y_waypoint, arc_vec, x_samples_cem, y_samples_cem, xdot_samples_cem, ydot_samples_cem, xddot_samples_cem, yddot_samples_cem, x_obs_trajectory, y_obs_trajectory,  self.x_des_init, self.y_des_init, initial_state, self.x_fin, self.y_fin, lamda_x_per, lamda_y_per)
-                
-
                 Time_per = time.time()-start 
              
                 ######################################
@@ -253,6 +236,7 @@ class planning_traj():
         y_cem = np.array(y_initial_compare)
 
         ts = np.linspace(0,2*np.pi, self.num)
+
         print(Time_our, Time_CEM, Time_per+ Time_CEM, "time_our", "time_cem", "time_perv")
         print(self.x_init, self.y_init, self.x_fin, self.y_fin)
 
@@ -284,7 +268,6 @@ class planning_traj():
         plt.plot(x_fatrop, y_fatrop, color = "green",  label = "Fatrop")
         plt.plot(x_best, y_best, color = "cyan",  label = "per")
         plt.plot(x_initial_compare, y_initial_compare, color = "pink", label = "cem")
-        #plot(x.T, y.T)
         plt.plot( x_best_our_method, y_best_our_method, color = "black", label = "proposed")
         for i in range(self.x_obs_init.shape[0]):
             plt.plot(self.x_obs_init[i]+1*(self.a_obs-0.04)*np.cos(ts),self.y_obs_init[i]+1*(self.a_obs-0.04)*np.sin(ts),'r-')
@@ -292,11 +275,6 @@ class planning_traj():
         plt.axis('equal')
         plt.legend()
         plt.show(block=True)
-
-      
-
-
-
 
     
 if __name__ == "__main__":
