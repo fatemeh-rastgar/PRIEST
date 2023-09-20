@@ -1,10 +1,17 @@
 Welcome to the **PRIEST** repository! This repository is associated with the paper **"PRIEST: Projection Guided Sampling-Based Optimization For Autonomous Navigation."**. Additionally, we have provided videos and demos, which can be accessed [here](https://sites.google.com/view/priest-optimization). 
 
-**Contacts:**
+## Table of Contents
+- [Contacts](#Contacts)
+- [General Requirements](#General-Requirements)
+- [Point-to-point-navigation](#Point-to-point-navigation)
+- [Running the First Benchmark - Comparison on BARN Dataset](#Running-the-First-Benchmark-Comparison-on-BARN-Dataset)
+
+
+## Contacts
 - Fatemeh Rastgar (fatemeh.rastgar2@gmail.com)
 - Arun Kumar Singh (aks1812@gmail.com)
 
-**General Requirements:**
+## General Requirements
 
 
 
@@ -29,7 +36,8 @@ We have also utilized the following libraries and repositories in our study:
 |Sampling-based method and Jackal| log-MPPI |(https://github.com/IhabMohamed/log-MPPI_ros)|
 |Holonomic robot |(robootont_description, robotont_gazebo)| (https://github.com/robotont)|
 
-**Running the First Benchmark - Comparison on BARN Dataset**
+
+## Running the First Benchmark - Comparison on BARN Dataset
 
 For the first benchmark, we conducted comparisons between several planners, including DWA, TEB, MPPI, log-MPPI, and our PRIEST method.
 To run these comparisons, follow these steps:
@@ -100,7 +108,7 @@ Please note that the following changes are required in send_goal.py
 
 - costmap_common_params.yaml
 
-**Point-to-point-navigation**
+## Point-to-point-navigation
 ### 2D Comparison
 To perform a 2D comparison, follow these steps:
 
