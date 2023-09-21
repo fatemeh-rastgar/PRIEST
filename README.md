@@ -96,24 +96,23 @@ To run these comparisons, follow these steps:
 
  Note that to run this benchmark, some changes are needed:
  
- 1. Modification in the Gazebo simulation configuration found in the `jackal.gazebo` file within the `jackal_description` package by commenting out the plugin named `robot_groundtruth_sim` and adding the `jackal_controller` plugin 
+ a. Modification in the Gazebo simulation configuration found in the `jackal.gazebo` file within the `jackal_description` package by commenting out the plugin named `robot_groundtruth_sim` and adding the `jackal_controller` plugin 
 
-` <!-- This is your XML code -->
-<gazebo>
-    <plugin name="jackal_controller" filename="libgazebo_ros_planar_move.so">
-        <commandTopic>mppi/cmd_vel</commandTopic>
-        <odometryTopic>ground_truth/odom</odometryTopic>
-        <odometryFrame>odom</odometryFrame>
-        <odometryRate>60.0</odometryRate>
-        <robotBaseFrame>base_link</robotBaseFrame>
-        <xyzOffsets>0 0 0</xyzOffsets>
-        <rpyOffsets>0 0 0</rpyOffsets>
-    </plugin>
-</gazebo>
-`
+      
+            <gazebo>
+                <plugin name="jackal_controller" filename="libgazebo_ros_planar_move.so">
+              <commandTopic>mppi/cmd_vel</commandTopic>
+              <odometryTopic>ground_truth/odom</odometryTopic>
+              <odometryFrame>odom</odometryFrame>
+              <odometryRate>60.0</odometryRate>
+              <robotBaseFrame>base_link</robotBaseFrame>
+              <xyzOffsets>0 0 0</xyzOffsets>
+              <rpyOffsets>0 0 0</rpyOffsets>
+          </plugin>
+            </gazebo>
 
 
- 2. Add the following lines to `move_base_teb.launch` / ` move_base.launch`
+ b. Adding the following lines to `move_base_teb.launch` / ` move_base.launch`
 
           <remap from='/cmd_vel' to='/mppi/cmd_vel'/>
           <remap from='/odom' to='/ground_truth/odom'/>
