@@ -50,7 +50,7 @@ To run these comparisons, follow these steps:
 
 2- Launch DWA/TEB Planner
   
-        roslaunch compare barn_world.launch
+        roslaunch compare clearpath_launch.launch
         roslaunch compare map_less_navigation.launch
         rosrun compare send_goal.py
 
