@@ -63,6 +63,7 @@ and to use the DWA planner:
       <include file="$(find compare)/launch/move_base.launch">
       
 3- Launch MPPI/ log-MPPI:
+
       roslaunch priest clearpath_launch.launch
       roslaunch compare control_stage_robotont.launch
       rosrun compare send_goal.py
