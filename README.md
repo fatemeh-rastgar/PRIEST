@@ -117,6 +117,8 @@ To run these comparisons, follow these steps:
           <remap from='/cmd_vel' to='/mppi/cmd_vel'/>
           <remap from='/odom' to='/ground_truth/odom'/>
 
+ c. Changing the `self.x_fin` and `self.y_fin` in `send_goal.py` to 0 and 15, respectively. 
+
 4- Launch MPPI/ log-MPPI
 
       roslaunch compare clear_path_dynamic.launch 
