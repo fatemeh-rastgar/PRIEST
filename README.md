@@ -98,7 +98,7 @@ To run these comparisons, follow these steps:
  
  1. Modification in the Gazebo simulation configuration found in the `jackal.gazebo` file within the `jackal_description` package by commenting out the plugin named `robot_groundtruth_sim` and adding the `jackal_controller` plugin 
 
-``` <!-- This is your XML code -->
+` <!-- This is your XML code -->
 <gazebo>
     <plugin name="jackal_controller" filename="libgazebo_ros_planar_move.so">
         <commandTopic>mppi/cmd_vel</commandTopic>
@@ -109,7 +109,8 @@ To run these comparisons, follow these steps:
         <xyzOffsets>0 0 0</xyzOffsets>
         <rpyOffsets>0 0 0</rpyOffsets>
     </plugin>
-</gazebo> ```
+</gazebo>
+`
 
 
  2. Add the following lines to `move_base_teb.launch` / ` move_base.launch`
