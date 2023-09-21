@@ -35,6 +35,7 @@ We have also utilized the following libraries and repositories in our study:
 |gradient-based solver |ROCKIT |(https://gitlab.kuleuven.be/meco-software/rockit)|
 |Sampling-based method and Jackal| log-MPPI |(https://github.com/IhabMohamed/log-MPPI_ros)|
 |Holonomic robot |(robootont_description, robotont_gazebo)| (https://github.com/robotont)|
+|sampling-based method|VPSTO|(https://github.com/AnishShr/Optimization_Robot_Motion-_Planning/tree/main/paper_vpsto)|
 
 
 ## Running the First Benchmark - Comparison on BARN Dataset
