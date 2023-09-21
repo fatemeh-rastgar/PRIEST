@@ -88,7 +88,31 @@ To run these comparisons, follow these steps:
 
 3- Launch TEB/DWA Planner
 
-      will be addded
+       roslaunch compare clear_path_dynamic.launch 
+       roslaunch compare map_less_navigation.launch
+       rosrun compare send_obs_velocities.py
+       rosrun compare send_goal.py
+
+ Note that to complete this benchmark, follow these steps:
+ 
+ 1. Modify the Gazebo simulation configuration found in the `jackal.gazebo` file within the `jackal_description` package by commenting out the plugin named `robot_groundtruth_sim` and adding the `jackal_controller` plugin 
+
+  <gazebo>
+    <plugin name="jackal_controller" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>mppi/cmd_vel</commandTopic>
+        <odometryTopic>ground_truth/odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <odometryRate>60.0</odometryRate>
+        <robotBaseFrame>base_link</robotBaseFrame>
+        <xyzOffsets>0 0 0</xyzOffsets>
+        <rpyOffsets>0 0 0</rpyOffsets>
+    </plugin>
+</gazebo>
+
+ 2. Add the following lines to `move_base_teb.launch` / ` move_base.launch`
+
+          <remap from='/cmd_vel' to='/mppi/cmd_vel'/>
+          <remap from='/odom' to='/ground_truth/odom'/>
 
 4- Launch MPPI/ log-MPPI
 
