@@ -89,7 +89,7 @@ To run these comparisons, follow these steps:
 
 3- Launch TEB/DWA Planner
 
-       roslaunch compare clear_path_dynamic.launch 
+       roslaunch compare clear_path_dynamic_2.launch 
        roslaunch compare map_less_navigation.launch
        rosrun compare send_obs_velocities.py
        rosrun compare send_goal.py
