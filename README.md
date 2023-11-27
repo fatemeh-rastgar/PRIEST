@@ -135,7 +135,7 @@ Please note that the following changes are required in send_goal.py
   
 - goal.target_pose.header.frame_id should be "/map"
 
-Additionally, for a fair comparison, we set the time horizon of MPPI and log-MPPI as 10s in `mppi_params_sim.yamal`.  
+Additionally, for a fair comparison, we set the time horizon of MPPI and log-MPPI as 10s in `mppi_params_sim.yaml`.  
 
  We use laser scans to observe obstacles, so make sure to update the following files in the Jackal package:
 
