@@ -40,7 +40,8 @@ We have also utilized the following libraries and repositories in our study:
 
 ## Running the First Benchmark - Comparison on BARN Dataset
 
-For the first benchmark, we conducted comparisons between several planners, including DWA, TEB, MPPI, log-MPPI, and our PRIEST method.
+For the first benchmark, we conducted comparisons between several planners, including DWA, TEB, MPPI, log-MPPI, and our PRIEST method. Note that, for fair comparison, we have used 
+the best possible implementations of all the baselines. 
 To run these comparisons, follow these steps:
 
 1- Launch PRIEST
@@ -121,6 +122,8 @@ To run these comparisons, follow these steps:
 
 4- Launch MPPI/ log-MPPI
 
+
+
       roslaunch compare clear_path_dynamic.launch 
       roslaunch mppi_control control_stage.launch
       rosrun compare send_obs_velocities.py
@@ -132,7 +135,7 @@ Please note that the following changes are required in send_goal.py
   
 - goal.target_pose.header.frame_id should be "/map"
 
-
+Additionally, for a fair comparison, we set the time horizon of MPPI and log-MPPI as 10s in `mppi_params_sim.yaml`.  
 
  We use laser scans to observe obstacles, so make sure to update the following files in the Jackal package:
 
