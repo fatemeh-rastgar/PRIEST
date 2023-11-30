@@ -65,13 +65,16 @@ and to use the DWA planner:
       
 3- Launch MPPI/ log-MPPI:
 
+To execute this benchmark, we have adapted the mppi-control package to be compatible with the Robotont Clearpath platform. The parameters remain the same as in the mppi-control package, with adjustments made to specific topics for compatibility with Robotont Clearpath. Please navigate to the "additional folder" in this repository. Copy the files and place them in corresponding directories within the mppi-control package. Afterward, run the following commands
+
       roslaunch priest clearpath_launch.launch
-      roslaunch compare control_stage_robotont.launch
+      roslaunch mppi-control control_stage_robotont.launch
       rosrun compare send_goal.py
 
 Please change the value from "true" to "false" in the following command within the control_stage_robotont.launch file to select the log-MPPI or MPPI method: 
 
        <arg name="normal_dist" default="false" />
+       
 
 ## Running the Planner on a Dynamic Environment
 
