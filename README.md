@@ -141,6 +141,7 @@ Please note that the following changes are required in send_goal.py
 Additionally, for a fair comparison, we set the time horizon of MPPI and log-MPPI as 10s in `mppi_params_sim.yaml`.  
 
  We use laser scans to observe obstacles, so make sure to update the following files in the Jackal package:
+ The link for the the yaml file is [link](https://github.com/fatemeh-rastgar/PRIEST/blob/main/compare/config/mppi_params_sim.yaml)
 
 - costmap_common_params.yaml
 
