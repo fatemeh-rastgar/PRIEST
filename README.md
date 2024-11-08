@@ -13,6 +13,9 @@ Welcome to the **PRIEST** repository! This repository is associated with the pap
 - Fatemeh Rastgar (fatemeh.rastgar2@gmail.com)
 - Arun Kumar Singh (aks1812@gmail.com)
 
+## Contributing 
+We welcome contributions from anyone interested in helping us to implement this project in ROS2.
+
 ## General Requirements
 
 To run the codes, you'll need the following dependencies:
